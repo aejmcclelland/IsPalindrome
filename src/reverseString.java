@@ -2,12 +2,34 @@ import java.util.Scanner;
 
 public class reverseString {
 
+    /**
+     * @param args
+     */
+
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Please enter a word to reverse: ");
-            String str = scanner.nextLine();
-            System.out.println(reverseWord(str));
+            while (true) {
+                System.out.println("Please enter a word to reverse: (or type 'exit' to stop).");
+                String input = scanner.nextLine();
+
+                if (input.equalsIgnoreCase("exit")) {
+                    break;
+                }
+                if (isPalindrome(input)) {
+                    System.out.println(input + " is a palindrome!");
+                } else {
+                    System.out.println(input + " is not a palindrome.");
+                }
+
+            }
+
+            System.out.println("Program exited");
         }
+    }
+
+    public static boolean isPalindrome(String input) {
+        String reversed = reverseWord(input);
+        return input.equalsIgnoreCase(reversed);
     }
 
     public static String reverseWord(String input) {
@@ -19,7 +41,7 @@ public class reverseString {
             reverse.append(input.charAt(i));
         }
 
-        String result = reverse.toString();
-        return result.toUpperCase();
+        return reverse.toString();
+
     }
 }
