@@ -15,10 +15,15 @@ public class reverseString {
                 if (input.equalsIgnoreCase("exit")) {
                     break;
                 }
-                if (isPalindrome(input)) {
-                    System.out.println(input + " is a palindrome!");
-                } else {
-                    System.out.println(input + " is not a palindrome.");
+
+                String[] words = input.split("\\s*,\\s*");
+
+                for (String word : words) {
+                    if (isPalindrome(word)) {
+                        System.out.println(word + " is a palindrome!");
+                    } else {
+                        System.out.println(word + " is not a palindrome.");
+                    }
                 }
 
             }
@@ -29,7 +34,7 @@ public class reverseString {
 
     public static boolean isPalindrome(String input) {
         String reversed = reverseWord(input);
-        return input.equalsIgnoreCase(reversed);
+        return input.equals(reversed);
     }
 
     public static String reverseWord(String input) {
